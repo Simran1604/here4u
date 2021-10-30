@@ -17,4 +17,15 @@ class databasebase{
     final CollectionReference db=FirebaseFirestore.instance.collection('issue');
      db.doc(uid).set({'issue':issue});
   }
+
+   updateStory(String story)
+  {
+    final CollectionReference db=FirebaseFirestore.instance.collection('stories');
+     db.doc(uid).set({'story':story});
+  }
+  updateUsername(String username)
+  {
+    final CollectionReference db=FirebaseFirestore.instance.collection('stories');
+     db.doc(uid).set({'username':username});
+  }
 }

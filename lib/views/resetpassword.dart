@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:here4u/handlers/authentication.dart';
+import 'package:here4u/views/home.dart';
 
 
 class resetPassword extends StatefulWidget {
@@ -94,7 +95,7 @@ final auth =FirebaseAuth.instance;
                                   child: ElevatedButton(
                                     onPressed:(){
                                       auth.sendPasswordResetEmail(email: email);
-                                      Navigator.pop(context);
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => home(),));
                                     } ,
                                     child: Text("Reset")
                                   ),

@@ -32,7 +32,7 @@ class _homeState extends State<home> {
       home: Scaffold(
         body: ListView(children: <Widget>[
           SizedBox(
-            height: MediaQuery.of(context).size.height / 1.2,
+            height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width / 1.2,
             child: ListView(children: [
               const Hero(

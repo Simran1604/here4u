@@ -52,7 +52,7 @@ class _EditState extends State<Edit> {
             ),
             const SizedBox(height: 15),
             ElevatedButton(
-              onPressed: () {databasebase(uid: user).updateIssue(myController.text);
+              onPressed: () {databasebase(uid: user).updateStory(myController.text);
                 myController.clear();
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => dashboard()));

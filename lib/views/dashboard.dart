@@ -1,4 +1,4 @@
-import 'dart:html';
+// ignore_for_file: prefer_typing_uninitialized_variables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -16,12 +16,14 @@ class dashboard extends StatefulWidget {
 }
 
 class _dashboardState extends State<dashboard> {
-  late Stream<QuerySnapshot> _cardFuture;
+  var _cardFuture;
   @override
     void initState() {
-    _cardFuture = FirebaseFirestore.instance.collection('issue').snapshots();
     super.initState();
   }
+
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
@@ -49,26 +51,31 @@ class _dashboardState extends State<dashboard> {
             },)
           ],
         ),
-         body:Container(
-        height: MediaQuery.of(context).size.height,
-        child: SingleChildScrollView(
-          child: StreamBuilder(
-    stream: FirebaseFirestore.instance.collection('issue').get().asStream(),
+         body:Center(
+           child: Column(
+        children:[StreamBuilder<QuerySnapshot>(
+    stream: FirebaseFirestore.instance.collection('stories').snapshots(),
     builder: (context, snapshot) {
       if (!snapshot.hasData) {
-        return const Text(
-          'No Data...',
-        );
+        return Center(child: CircularProgressIndicator());
       } else { 
-        return ListView.builder(
-          itemBuilder: (context,index){
-            
-        });
-        }}
-      ),),)
+        final stories=snapshot.data!.docs;
+        List<card> storyList=[];
+        for(var story in stories){
+          final storyData=story.get('story');
+          storyList.add(card(storyData));
+        }
+        return Expanded(
+          child: ListView(
+            padding: const EdgeInsets.symmetric(vertical:10,horizontal: 8 ),
+            children: storyList,
+          ),
+        );}
+    })
+        ]
+         ),)
     ),);
 
   }
 }
 
-     

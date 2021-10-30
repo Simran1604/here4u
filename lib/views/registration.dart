@@ -4,6 +4,7 @@ import 'package:here4u/handlers//authentication.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:here4u/handlers/database.dart';
 import 'package:here4u/views/home.dart';
+import 'package:here4u/handlers/database.dart';
 
 class register extends StatefulWidget {
   const register({Key? key}) : super(key: key);
@@ -174,6 +175,7 @@ class _registerState extends State<register> {
                                                       Colors.redAccent,
                                                   content: Text(
                                                       "Registration Successful")));
+                                                      databasebase(uid: auth.currentUser!.uid).updateUsername(nameController.text);
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:here4u/views/home.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
-  runApp(const MyApp());
+  void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -20,7 +23,7 @@ class MyApp extends StatelessWidget {
         labelColor: Colors.blueAccent
         )
       ),
-      home:const home(),
+      home: home(),
     );
   }
 }

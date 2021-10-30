@@ -2,6 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:here4u/views/dashboard.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:here4u/handlers/authentication.dart';
+import 'resetpassword.dart';
+import 'registration.dart';
 
 
 class home extends StatefulWidget {
@@ -53,7 +57,7 @@ bool spinner=false;
                    children: [
                      const Padding(
                        padding:  EdgeInsets.only(top:8.0,left: 8,right: 8),
-                       child: Text("Choose a username",
+                       child: Text("Enter email",
                       ),
                      ),
                      Padding(
@@ -62,7 +66,7 @@ bool spinner=false;
                          controller: emailController,
                         autofocus: true, 
                          decoration: const InputDecoration(
-                           hintText: "Joan of Arc"
+                           hintText: "name@email.com"
                            ,fillColor: Colors.white
                          ),
                          keyboardType: TextInputType.emailAddress,
@@ -95,7 +99,6 @@ bool spinner=false;
                        padding: const EdgeInsets.only(top:4.0,left: 8,right: 8),
                        child: TextFormField(
                          controller: passwordcontroller,
-                         
                          obscureText: true,
                          keyboardType: TextInputType.text,
                          decoration: const InputDecoration(
@@ -131,38 +134,38 @@ bool spinner=false;
                               body: Builder(builder: (context)=>Center(
                                 child: ElevatedButton(
                                   onPressed:()async { 
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>dashboard()));                                          
-                                  //   try {
-                                  //         UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                                  //           email: email,
-                                  //           password: password
-                                  //         );
-                                  //         emailController.clear();
-                                  //         passwordcontroller.clear();
-                                  //          Navigator.push(
-                                  //           context,
-                                  //           MaterialPageRoute(builder: (context) =>dashboard()));
-                                  //       } on FirebaseAuthException catch (e) {
-                                  //         if (e.code == 'user-not-found') {
+                                    // Navigator.push(context, MaterialPageRoute(builder: (context)=>dashboard()));                                          
+                                    try {
+                                          UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                                            email: email,
+                                            password: password
+                                          );
+                                          emailController.clear();
+                                          passwordcontroller.clear();
+                                           Navigator.push(
+                                            context,
+                                            MaterialPageRoute(builder: (context) =>dashboard()));
+                                        } on FirebaseAuthException catch (e) {
+                                          if (e.code == 'user-not-found') {
                                             
-                                  //           ScaffoldMessenger.of(context).showSnackBar(
-                                  //                 authentication.customSnackBar(
-                                  //                   content:
-                                  //                       'No user found for that email.',
-                                  //                 ),
-                                  //               );
-                                  //         } else if (e.code == 'wrong-password') {
+                                            ScaffoldMessenger.of(context).showSnackBar(
+                                                  authentication.customSnackBar(
+                                                    content:
+                                                        'No user found for that email.',
+                                                  ),
+                                                );
+                                          } else if (e.code == 'wrong-password') {
       
-                                  //           ScaffoldMessenger.of(context).showSnackBar(
-                                  //                 authentication.customSnackBar(
-                                  //                   content:
-                                  //                       'Wrong password provided for that user.',
-                                  //                 ),
-                                  //               );
-                                  //         }
-                                  //       }
+                                            ScaffoldMessenger.of(context).showSnackBar(
+                                                  authentication.customSnackBar(
+                                                    content:
+                                                        'Wrong password provided for that user.',
+                                                  ),
+                                                );
+                                                }
+                                        }
                                       } ,
-                                  child: const Text("login")
+                                  child: const Text("Login")
                                 ),
                               )),
                             ),
@@ -170,12 +173,25 @@ bool spinner=false;
                         ),
                       ),
                   ),TextButton(onPressed: (){
-                    //Navigator.of(context).push(MaterialPageRoute(builder: (context) => resetPassword(),));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => resetPassword(),));
                   },
                       style: ButtonStyle(
                         elevation: MaterialStateProperty.all(10)
                       ),
                          child: const Text('Forgot password?',
+                         style: TextStyle(
+                           color: Colors.blue,
+                           decoration: TextDecoration.underline,
+                           fontWeight: FontWeight.w500
+                         ),) ),
+
+                         TextButton(onPressed: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => register(),));
+                  },
+                      style: ButtonStyle(
+                        elevation: MaterialStateProperty.all(10)
+                      ),
+                         child: const Text('New in here? Sign in',
                          style: TextStyle(
                            color: Colors.blue,
                            decoration: TextDecoration.underline,

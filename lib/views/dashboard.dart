@@ -6,8 +6,10 @@ import 'package:here4u/views/edit.dart';
 import 'package:here4u/views/home.dart';
 import 'package:here4u/widgets/TextCard.dart';
 
+import 'edit.dart';
+
 class dashboard extends StatefulWidget {
-  const dashboard({ Key? key }) : super(key: key);
+  const dashboard({Key? key}) : super(key: key);
 
   @override
   _dashboardState createState() => _dashboardState();
@@ -23,13 +25,10 @@ class _dashboardState extends State<dashboard> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
-        accentColor: Colors.blueAccent,
-        primaryColor: const Color(0xFF0A0E21),
-        scaffoldBackgroundColor: const Color(0xFF0A0E21),
-        tabBarTheme: const TabBarTheme(
-        labelColor: Colors.blueAccent
-        )
-      ),
+          accentColor: Colors.blueAccent,
+          primaryColor: const Color(0xFF0A0E21),
+          scaffoldBackgroundColor: const Color(0xFF0A0E21),
+          tabBarTheme: const TabBarTheme(labelColor: Colors.blueAccent)),
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -50,7 +49,7 @@ class _dashboardState extends State<dashboard> {
             },)
           ],
         ),
-      body:Container(
+         body:Container(
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
           child: StreamBuilder(
@@ -68,5 +67,8 @@ class _dashboardState extends State<dashboard> {
         }}
       ),),)
     ),);
+
   }
 }
+
+     

@@ -12,9 +12,9 @@ class databasebase{
     
   }
 
-   updateName(String name)
+   updateIssue(String issue)
   {
-    final CollectionReference db=FirebaseFirestore.instance.collection('Name');
-     db.doc(uid).set({'name':name});
+    final CollectionReference db=FirebaseFirestore.instance.collection('issue');
+     db.doc(uid).set({'issue':issue});
   }
 }

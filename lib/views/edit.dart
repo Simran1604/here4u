@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:here4u/views/dashboard.dart';
+import 'package:here4u/handlers/database.dart';
 import 'package:here4u/widgets/TextCard.dart';
 
 class Edit extends StatefulWidget {
@@ -11,13 +13,14 @@ class Edit extends StatefulWidget {
 
 class _EditState extends State<Edit> {
   final myController = TextEditingController();
+  var user= FirebaseAuth.instance.currentUser!.uid;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey.shade900,
-        title: Text("Edit"),
+        title: const Text("Edit"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -29,23 +32,28 @@ class _EditState extends State<Edit> {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(height: 5),
-            Text("Tell Us About Your Problem", style: TextStyle(fontSize: 25)),
-            SizedBox(height: 15),
+           const SizedBox(height: 5),
+            const Text("Feel free to share your issues with us.", style: TextStyle(fontSize: 20)),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text('We promise your identity won\t be revealed.',style: TextStyle(fontSize: 15),),
+            ),
+            const SizedBox(height: 15),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: TextField(
-                decoration: InputDecoration(
+                decoration:const InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "Enter text",
+                  hintText: "Share...",
                 ),
                 maxLines: null,
                 controller: myController,
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () {databasebase(uid: user).updateIssue(myController.text);
+                myController.clear();
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => dashboard()));
               },

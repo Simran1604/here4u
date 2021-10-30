@@ -1,3 +1,7 @@
+<!DOCTYPE HTML>
+<html>
+ 
+<body>
 <img src="https://github.com/ipsitasatapathy/here4u/blob/master/assets/logo.png" alt="logo">
 <h1>HERE4U</h1>
 
@@ -17,6 +21,17 @@
   <li>Know about legal procedures, available options, and explore more.</li>
   <li>Moral Support and Guidance.</li>
  </ul>
-
+ 
+  <h1>Technologies Used</h1>
+   <div>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" height=75px width=75px; />
+  </div>
+   <div>
+ <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" height=80px width=80px; />
+  </div>
+ 
+</body>
+  </html>
+  
 
 

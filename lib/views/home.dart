@@ -133,8 +133,7 @@ bool spinner=false;
                               backgroundColor: Colors.blueAccent,
                               body: Builder(builder: (context)=>Center(
                                 child: ElevatedButton(
-                                  onPressed:()async { 
-                                    // Navigator.push(context, MaterialPageRoute(builder: (context)=>dashboard()));                                          
+                                  onPressed:()async {                                          
                                     try {
                                           UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
                                             email: email,

@@ -63,6 +63,7 @@ flutter:
   assets:
    - logo.png
    - edit.png
+   - dp.png
    - dashboard.png
   #   - images/a_dot_ham.jpeg
 

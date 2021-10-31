@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:here4u/handlers/authentication.dart';
+import 'package:here4u/views/home.dart';
 
 class resetPassword extends StatefulWidget {
   const resetPassword({Key? key}) : super(key: key);
@@ -41,11 +42,30 @@ class _resetPasswordState extends State<resetPassword> {
                 child: ListView(
                   children: [
                     Padding(
-                      padding:
-                          const EdgeInsets.only(top: 8.0, left: 8, right: 8),
-                      child: Text(
-                        "Enter email",
-                      ),
+                      padding: const EdgeInsets.all(12.0),
+                      child: Center(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.blue,
+                            ),
+                            height: 36.8,
+                            width: 69,
+                            
+                              child: Scaffold(
+                                backgroundColor: Colors.blue,
+                                body: Builder(builder: (context)=>Center(
+                                  child: ElevatedButton(
+                                    onPressed:(){
+                                      auth.sendPasswordResetEmail(email: email);
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => home(),));
+                                    } ,
+                                    child: Text("Reset")
+                                  ),
+                                )),
+                              ),                          
+                          ),
+                        ),
                     ),
                     Padding(
                       padding:

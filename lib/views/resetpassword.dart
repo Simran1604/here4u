@@ -34,39 +34,7 @@ class _resetPasswordState extends State<resetPassword> {
             Hero(
                 tag: 'main',
                 child: Image(image: AssetImage('assets/logo.png'))),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: 100,
-                width: 110,
-                child: ListView(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Center(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: Colors.blue,
-                            ),
-                            height: 36.8,
-                            width: 69,
-                            
-                              child: Scaffold(
-                                backgroundColor: Colors.blue,
-                                body: Builder(builder: (context)=>Center(
-                                  child: ElevatedButton(
-                                    onPressed:(){
-                                      auth.sendPasswordResetEmail(email: email);
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => home(),));
-                                    } ,
-                                    child: Text("Reset")
-                                  ),
-                                )),
-                              ),                          
-                          ),
-                        ),
-                    ),
+
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 4.0, left: 8, right: 8),
@@ -85,11 +53,7 @@ class _resetPasswordState extends State<resetPassword> {
                           }
                         },
                       ),
-                    )
-                  ],
-                ),
-              ),
-            ),
+                    ),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Center(

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:here4u/handlers/database.dart';
 import 'package:here4u/views/constants.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -34,7 +37,6 @@ class _ChatScreenState extends State<ChatScreen> {
                   Expanded(
                     child: TextField(
                       onChanged: (value) {
-                        //Do something with the user input.
                       },
                       decoration: kMessageTextFieldDecoration,
                     ),

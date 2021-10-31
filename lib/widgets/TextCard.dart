@@ -3,14 +3,11 @@
 import 'package:flutter/material.dart';
 
 class card extends StatefulWidget {
-
-   card(String issue, { Key? key }) : super(key: key);
-
+  card(String issue, {Key? key}) : super(key: key);
 
   @override
   _cardState createState() => _cardState();
 }
-
 
 class _cardState extends State<card> {
   final Icon _icon1 = const Icon(
@@ -23,9 +20,7 @@ class _cardState extends State<card> {
   );
   bool icon = false;
 
- 
   late String issue;
-
 
   @override
   Widget build(BuildContext context) {
@@ -33,20 +28,19 @@ class _cardState extends State<card> {
       padding: const EdgeInsets.all(12.0),
       child: Container(
         decoration: BoxDecoration(
-            color: Color(0xFF1D1E33),
-            borderRadius: BorderRadius.circular(10)),
+            color: Color(0xFF1D1E33), borderRadius: BorderRadius.circular(10)),
         height: MediaQuery.of(context).size.height / 3.5,
-        width: MediaQuery.of(context).size.width / 1.1,
+        width: MediaQuery.of(context).size.width / 1,
         child: Column(
           children: [
             CircleAvatar(
               backgroundColor: Colors.blueAccent,
             ),
             Expanded(
-              child: Text(
-                    '$issue'),
+              child: Text('$issue'),
+            ),
             Row(
-              children: [
+              children: <Widget>[
                 Row(
                   children: [
                     IconButton(
@@ -56,9 +50,9 @@ class _cardState extends State<card> {
                         });
                       },
                       icon: icon ? _icon2 : _icon1,
-                    )
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ],

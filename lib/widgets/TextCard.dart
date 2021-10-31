@@ -10,12 +10,10 @@ class card extends StatefulWidget {
   var storyData;
    card(this.storyData,  { Key? key }) : super(key: key);
    
-  
 
   @override
   _cardState createState() => _cardState();
 }
-
 
 class _cardState extends State<card> {
     
@@ -27,6 +25,7 @@ class _cardState extends State<card> {
     Icons.favorite,
     color: Color(0xFFE91E63),
   );
+
   final Icon _icon3 = const Icon(
     Icons.celebration_outlined,
     color: Colors.blueAccent
@@ -36,6 +35,7 @@ class _cardState extends State<card> {
     color: Color(0xFFFFAB00),
   );
   bool icon = false,icon2=false;
+
 
   @override
   Widget build(BuildContext context) {

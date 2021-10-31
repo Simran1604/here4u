@@ -1,5 +1,5 @@
-// ignore_for_file: prefer_typing_uninitialized_variables
 
+// ignore_for_file: prefer_typing_uninitialized_variables
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:here4u/views/edit.dart';
@@ -18,12 +18,14 @@ class dashboard extends StatefulWidget {
 class _dashboardState extends State<dashboard> {
   var _cardFuture;
   @override
+
     void initState() {
     super.initState();
   }
 
 
   @override
+
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
@@ -34,21 +36,33 @@ class _dashboardState extends State<dashboard> {
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title:const Hero(tag: 'main', child: Image(
-            height: 100,
-            width: 100,
-            image: AssetImage('assets/logo.png'))) ,
+          title: const Hero(
+              tag: 'main',
+              child: Image(
+                  height: 100,
+                  width: 100,
+                  image: AssetImage('assets/logo.png'))),
           backgroundColor: Color(0xFF1D1E33),
-          actions:  [
-            IconButton(onPressed: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Edit()));
-            }, icon: Icon(Icons.edit),            
-            color: Colors.blueAccent,),
-            IconButton(icon:const Icon(Icons.logout,
-            color: Colors.blueAccent,),
-            onPressed: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => home(),));
-            },)
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Edit()));
+              },
+              icon: Icon(Icons.edit),
+              color: Colors.blueAccent,
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.logout,
+                color: Colors.blueAccent,
+              ),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => home(),
+                ));
+              },
+            )
           ],
         ),
          body:Center(
@@ -78,4 +92,3 @@ class _dashboardState extends State<dashboard> {
 
   }
 }
-
